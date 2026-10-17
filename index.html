@@ -236,8 +236,10 @@
     // - tiktok / instagram / x : pega la URL COMPLETA (o deja '' vacío y el icono no se muestra)
     // - handle: el @usuario que se muestra en la tarjeta
     // ============================================================
-    // 🔧 REDES DE CADA INTEGRANTE — EDITA AQUÍ FÁCIL
-    // Pega la URL COMPLETA en cada campo. Si dejas '' vacío, el icono NO se muestra.
+    // 🔧 REDES Y FOTOS DE CADA INTEGRANTE — EDITA AQUÍ FÁCIL
+    // - tiktok / instagram: pega la URL COMPLETA. Si dejas '' vacío, el icono NO se muestra.
+    // - photo: ruta de la foto en assets/ (ej: 'assets/fernando.jpg'). Si está vacía
+    //   se muestran las iniciales. Usa fotos CUADRADAS (~400x400px) para que se vean bien recortadas.
     //
     // 📌 REFERENCIA — los 8 links que me pasaste (copia/pega donde corresponda):
     //    1) https://www.instagram.com/cristhian19chx
@@ -253,36 +255,42 @@
       {
         name: 'Fernando Barreto', role: 'Host & Streamer', handle: '@fernandobarreto_6',
         initials: 'FB', grad: 'linear-gradient(135deg,#00f5ff,#8b5cf6)',
+        photo: 'assets/fernando.jpg', // ← foto de Fernando (ej: 'assets/fernando.jpg')
         tiktok: 'https://www.tiktok.com/@fernandobarreto_6',       // ← TikTok de Fernando
         instagram: 'https://www.instagram.com/fernando.barreto06'  // ← Instagram de Fernando
       },
       {
         name: 'Luis Diaz', role: 'Co-host', handle: '@luissss.6',
         initials: 'LD', grad: 'linear-gradient(135deg,#ff00ff,#8b5cf6)',
+        photo: 'assets/luis.jpg', // ← foto de Luis (ej: 'assets/luis.jpg')
         tiktok: 'https://www.tiktok.com/@luissss.6',       // ← TikTok de Luis
         instagram: 'https://www.instagram.com/diazluis.6'  // ← Instagram de Luis
       },
       {
         name: 'Rogger Gonzales', role: 'Editor & Motion', handle: '@lxw.m7x',
         initials: 'RG', grad: 'linear-gradient(135deg,#39ff14,#00f5ff)',
+        photo: 'assets/rogger.jpg', // ← foto de Rogger (ej: 'assets/rogger.jpg')
         tiktok: 'https://www.tiktok.com/@lxw.m7x',       // ← TikTok de Rogger
         instagram: 'https://www.instagram.com/rxgxx.m7x' // ← Instagram de Rogger
       },
       {
         name: 'Robert Cajusol', role: 'Community Mgr', handle: '',
         initials: 'RC', grad: 'linear-gradient(135deg,#ff00ff,#ff6b35)',
+        photo: '', // ← foto de Robert (ej: 'assets/robert.jpg')
         tiktok: '',      // ← TikTok de Robert
         instagram: ''    // ← Instagram de Robert
       },
       {
         name: 'Cristhian Chimoy', role: 'Content Creator', handle: '@cristhian19xd',
         initials: 'CC', grad: 'linear-gradient(135deg,#8b5cf6,#00f5ff)',
+        photo: 'assets/cristhian.jpg', // ← foto de Cristhian (ej: 'assets/cristhian.jpg')
         tiktok: 'https://www.tiktok.com/@cristhian19xd',       // ← TikTok de Cristhian
         instagram: 'https://www.instagram.com/cristhian19chx'  // ← Instagram de Cristhian
       },
       {
         name: 'Daniel Paico', role: 'Tech & Setup', handle: '',
         initials: 'DP', grad: 'linear-gradient(135deg,#00f5ff,#39ff14)',
+        photo: '', // ← foto de Daniel (ej: 'assets/daniel.jpg')
         tiktok: '',      // ← TikTok de Daniel
         instagram: ''    // ← Instagram de Daniel
       }
@@ -300,8 +308,12 @@
       const socials = [];
       if (m.tiktok)    socials.push(`<a href="${esc(m.tiktok)}" target="_blank" rel="noopener" aria-label="TikTok de ${esc(m.name)}"><span aria-hidden="true">♪</span></a>`);
       if (m.instagram) socials.push(`<a href="${esc(m.instagram)}" target="_blank" rel="noopener" aria-label="Instagram de ${esc(m.name)}"><span aria-hidden="true">◎</span></a>`);
+      // Foto del integrante: si hay foto se muestra; si no hay (o falla la carga), quedan las iniciales
+      const avatarInner = m.photo
+        ? `<img src="${esc(m.photo)}" alt="" loading="lazy" onerror="this.parentElement.textContent='${esc(m.initials)}'">`
+        : esc(m.initials);
       card.innerHTML = `
-        <div class="member-avatar" style="background:${m.grad}; box-shadow: 0 0 24px rgba(0,245,255,0.35);" aria-hidden="true">${esc(m.initials)}</div>
+        <div class="member-avatar" style="background:${m.grad}; box-shadow: 0 0 24px rgba(0,245,255,0.35);" aria-hidden="true">${avatarInner}</div>
         <div class="member-name">${esc(m.name)}</div>
         <div class="member-role">${esc(m.role)}</div>
         <div class="member-handle">${esc(m.handle) || '✦ Próximamente'}</div>

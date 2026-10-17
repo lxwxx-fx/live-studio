@@ -517,6 +517,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .member-card:hover .member-avatar { transform: scale(1.08) rotate(-4deg); }
 
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
 .member-avatar::after {
   content: '';
   position: absolute;
