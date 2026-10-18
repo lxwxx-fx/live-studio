@@ -8,356 +8,485 @@
   <meta property="og:title" content="LiveStudio — Canal de TikTok" />
   <meta property="og:description" content="6 creadores. Streams en vivo. Contenido que conecta." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/logo.jpeg" />
+  <meta property="og:image" content="assets/logo.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LiveStudio — Canal de TikTok" />
   <meta name="twitter:description" content="6 creadores. Streams en vivo. Contenido que conecta." />
-  <meta name="twitter:image" content="assets/logo.jpeg" />
-  <meta name="theme-color" content="#05050a" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <meta name="twitter:image" content="assets/logo.jpg" />
+  <meta name="theme-color" content="#04060c" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preload" href="assets/fonts/Sora.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <canvas id="particles"></canvas>
-  <div class="scanlines"></div>
-  <div class="cursor-glow"></div>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="logo">
-        <img src="assets/logo.jpeg" alt="LiveStudio logo" />
-        <span>LIVE<span class="neon-cyan">STUDIO</span></span>
+  <!-- Fondos decorativos -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__aura bg__aura--1"></div>
+    <div class="bg__aura bg__aura--2"></div>
+    <div class="bg__aura bg__aura--3"></div>
+    <div class="bg__grid"></div>
+    <div class="bg__noise"></div>
+  </div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="header-inner">
+      <a href="#hero" class="brand" aria-label="LiveStudio, ir al inicio">
+        <span class="brand__mark"><img src="assets/logo-mark.png" alt="" width="44" height="44" /></span>
+        <span class="brand__name">LIVE<span>STUDIO</span></span>
       </a>
-      <button class="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="navLinks">☰</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#hero">Inicio</a></li>
-        <li><a href="#members">Equipo</a></li>
-        <li><a href="#gallery">Galería</a></li>
-        <li><a href="#stats">Stats</a></li>
-        <li><a href="#contact">Contacto</a></li>
-        <li><a href="https://www.tiktok.com/@live.studio55?_r=1&_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener" class="nav-cta">TikTok ↗</a></li>
-      </ul>
-    </div>
-  </nav>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <div class="eyebrow reveal"><span class="dot"></span> En vivo · 6 creadores · TikTok</div>
-        <h1 class="reveal stagger-1">
-          El canal donde el <span class="gradient-text glitch" data-text="stream">stream</span><br />
-          se vuelve <span class="neon-magenta">espectáculo</span>.
-        </h1>
-        <p class="reveal stagger-2">
-          LiveStudio es una familia de 6 creadores que convierten cada directo en una experiencia.
-          Contenido viral, comunidad real y energía que no se apaga.
-        </p>
-        <div class="hero-actions reveal stagger-3">
-          <a href="https://www.tiktok.com/@live.studio55?_r=1&_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener" class="btn btn-primary">Ver en TikTok ↗</a>
-          <a href="#members" class="btn btn-ghost">Conoce al equipo</a>
-        </div>
-        <div class="hero-stats reveal stagger-4">
-          <div class="hero-stat">
-            <span class="num" data-target="6" data-suffix="">0</span>
-            <span class="label">Creadores</span>
-          </div>
-          <div class="hero-stat">
-            <span class="num" data-target="120" data-suffix="K+">0</span>
-            <span class="label">Seguidores</span>
-          </div>
-          <div class="hero-stat">
-            <span class="num" data-target="15.2" data-suffix="M">0</span>
-            <span class="label">Views totales</span>
-          </div>
-          <div class="hero-stat">
-            <span class="num" data-target="250" data-suffix="+">0</span>
-            <span class="label">Lives hechos</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual reveal-right">
-        <div class="hero-logo-wrap">
-          <div class="hero-logo-ring"></div>
-          <div class="hero-logo-ring ring-2"></div>
-          <img src="assets/logo.jpeg" alt="LiveStudio" class="hero-logo" />
-        </div>
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__list">
+          <li><a href="#hero" class="nav__link is-active">Inicio</a></li>
+          <li><a href="#members" class="nav__link">Equipo</a></li>
+          <li><a href="#gallery" class="nav__link">Galería</a></li>
+          <li><a href="#stats" class="nav__link">Stats</a></li>
+          <li><a href="#contact" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--primary btn--sm magnetic" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          TikTok
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- MEMBERS -->
-  <section id="members">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag reveal">El Equipo</span>
-        <h2 class="reveal stagger-1">6 voces, <span class="gradient-text">una sola señal</span></h2>
-        <p class="reveal stagger-2">Cada integrante aporta su estilo. Juntos somos LiveStudio.</p>
-      </div>
-      <div class="members-grid" id="membersGrid"></div>
-    </div>
-  </section>
+  <!-- Menú móvil -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav class="mobile-nav__inner" aria-label="Navegación móvil">
+      <a href="#hero" class="m-link" style="--i:0"><em>01</em>Inicio</a>
+      <a href="#members" class="m-link" style="--i:1"><em>02</em>Equipo</a>
+      <a href="#gallery" class="m-link" style="--i:2"><em>03</em>Galería</a>
+      <a href="#stats" class="m-link" style="--i:3"><em>04</em>Stats</a>
+      <a href="#contact" class="m-link" style="--i:4"><em>05</em>Contacto</a>
+      <a class="btn btn--primary m-cta" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener" style="--i:5">Ver TikTok ↗</a>
+      <p class="m-note" style="--i:6">@live.studio55 · Stream, crea, conecta.</p>
+    </nav>
+  </div>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag reveal">Galería</span>
-        <h2 class="reveal stagger-1">Momentos <span class="neon-magenta">épicos</span></h2>
-        <p class="reveal stagger-2">Capturas de streams, behind the scenes y los mejores clips.</p>
-      </div>
-      <div class="gallery-grid" id="galleryGrid"></div>
-    </div>
-  </section>
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section id="hero" class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="pill hero__eyebrow" data-reveal>
+            <span class="live-dot" aria-hidden="true"></span>
+            En vivo · 6 creadores · TikTok
+          </p>
 
-  <!-- STATS -->
-  <section id="stats" class="stats-section">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag reveal">Estadísticas</span>
-        <h2 class="reveal stagger-1">Números que <span class="gradient-text">hablan</span></h2>
-        <p class="reveal stagger-2">El crecimiento de una comunidad que no deja de sumar.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card reveal stagger-1">
-          <span class="icon">👥</span>
-          <span class="value" data-target="120" data-suffix="K">0</span>
-          <span class="label">Seguidores</span>
-        </div>
-        <div class="stat-card reveal stagger-2">
-          <span class="icon">❤️</span>
-          <span class="value" data-target="4.8" data-suffix="M">0</span>
-          <span class="label">Likes totales</span>
-        </div>
-        <div class="stat-card reveal stagger-3">
-          <span class="icon">👁️</span>
-          <span class="value" data-target="15.2" data-suffix="M">0</span>
-          <span class="label">Views</span>
-        </div>
-        <div class="stat-card reveal stagger-4">
-          <span class="icon">🔴</span>
-          <span class="value" data-target="250" data-suffix="+">0</span>
-          <span class="label">Lives realizados</span>
-        </div>
-        <div class="stat-card reveal stagger-5">
-          <span class="icon">🎬</span>
-          <span class="value" data-target="340" data-suffix="+">0</span>
-          <span class="label">Videos publicados</span>
-        </div>
-        <div class="stat-card reveal stagger-6">
-          <span class="icon">💬</span>
-          <span class="value" data-target="50" data-suffix="K+">0</span>
-          <span class="label">Comentarios</span>
-        </div>
-        <div class="stat-card reveal stagger-7">
-          <span class="icon">🤝</span>
-          <span class="value" data-target="6" data-suffix="">0</span>
-          <span class="label">Creadores activos</span>
-        </div>
-        <div class="stat-card reveal stagger-8">
-          <span class="icon">🏆</span>
-          <span class="value" data-target="12" data-suffix="">0</span>
-          <span class="label">Marcas aliadas</span>
-        </div>
-      </div>
-    </div>
-  </section>
+          <h1 class="hero__title" data-reveal style="--d:80ms">
+            El canal donde el stream
+            se vuelve <span class="text-grad">espectáculo.</span>
+          </h1>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <span class="tag reveal">Contacto</span>
-        <h2 class="reveal stagger-1">Únete a la <span class="neon-lime">señal</span></h2>
-        <p class="reveal stagger-2">Síguenos, colabora o simplemente di hola.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card reveal-left">
-          <h3>Redes sociales</h3>
-          <p>Encuéntranos en todas las plataformas. El live nunca para.</p>
-          <div class="social-links">
-            <a href="https://www.tiktok.com/@live.studio55?_r=1&_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener" class="social-link">
-              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></span>
-              <span class="meta"><span class="name">TikTok</span><span class="handle">@live.studio55</span></span>
+          <p class="hero__lead" data-reveal style="--d:160ms">
+            LiveStudio es una familia de 6 creadores que convierte cada directo en una experiencia.
+            Contenido viral, comunidad real y una energía que no se apaga.
+          </p>
+
+          <div class="hero__actions" data-reveal style="--d:240ms">
+            <a class="btn btn--primary magnetic" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+              Ver en TikTok
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
-            <a href="https://www.instagram.com/live_studio5?mdxt=dXhkajJtMmtmd2Vl" target="_blank" rel="noopener" class="social-link">
-              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
-              <span class="meta"><span class="name">Instagram</span><span class="handle">@live_studio5</span></span>
-            </a>
-            <!-- EDITA AQUÍ: pega la URL real de Facebook en href -->
-            <a href="https://www.facebook.com/share/18sJFXWD18/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link">
-              <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg></span>
-              <span class="meta"><span class="name">Facebook</span><span class="handle">LiveStudio</span></span>
+            <a class="btn btn--ghost magnetic" href="#members">
+              Conoce al equipo
+              <svg class="icon icon--arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
             </a>
           </div>
+
+          <dl class="hero__stats" data-reveal style="--d:320ms">
+            <div class="hstat">
+              <dt class="hstat__label">Creadores</dt>
+              <dd class="hstat__num"><span data-count data-target="6">0</span></dd>
+            </div>
+            <div class="hstat">
+              <dt class="hstat__label">Seguidores</dt>
+              <dd class="hstat__num"><span data-count data-target="120" data-suffix="K+">0</span></dd>
+            </div>
+            <div class="hstat">
+              <dt class="hstat__label">Views totales</dt>
+              <dd class="hstat__num"><span data-count data-target="15.2" data-decimals="1" data-suffix="M">0</span></dd>
+            </div>
+            <div class="hstat">
+              <dt class="hstat__label">Lives hechos</dt>
+              <dd class="hstat__num"><span data-count data-target="250" data-suffix="+">0</span></dd>
+            </div>
+          </dl>
         </div>
-        <div class="contact-card reveal-right">
-          <h3>Newsletter</h3>
-          <p>Recibe avisos de lives, drops y contenido exclusivo antes que nadie.</p>
-          <form class="newsletter">
-            <label class="sr-only" for="newsletterEmail">Correo electrónico</label>
-            <input id="newsletterEmail" type="email" placeholder="tu@email.com" required autocomplete="email" />
-            <button type="submit">Suscribirme</button>
-          </form>
-          <p class="newsletter-status" role="status" aria-live="polite"></p>
-          <div style="margin-top:28px;">
-            <h3 style="font-size:1.2rem; margin-bottom:8px;">Colaboraciones</h3>
-            <p style="margin-bottom:12px;">Marcas, eventos y collabs: <span class="neon-cyan">Próximamente</span></p>
-            <p style="font-size:0.85rem;">Respondemos en menos de 48h.</p>
+
+        <div class="hero__visual" data-reveal="scale" style="--d:200ms">
+          <div class="hero-art" id="heroArt">
+            <div class="hero-art__aura" aria-hidden="true"></div>
+            <div class="hero-art__ring" aria-hidden="true"></div>
+            <div class="hero-art__ring hero-art__ring--2" aria-hidden="true"></div>
+            <div class="hero-art__orbit" aria-hidden="true"><i></i></div>
+
+            <div class="hero-art__stage">
+              <img class="hero-art__logo" src="assets/logo.png" alt="Logo de Live Studio" width="900" height="704" />
+            </div>
+
+            <div class="chip chip--live">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span><strong>EN VIVO</strong><small>TikTok Live</small></span>
+            </div>
+            <div class="chip chip--views">
+              <span class="chip__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </span>
+              <span><strong>15.2M</strong><small>views</small></span>
+            </div>
+            <div class="chip chip--handle">
+              <span class="chip__ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+              </span>
+              <span><strong>@live.studio55</strong><small>síguenos</small></span>
+            </div>
           </div>
+
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#members" aria-label="Bajar al equipo">
+        <span aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span>Streams en vivo</span><i>✦</i><span class="is-outline">Contenido viral</span><i>✦</i>
+          <span>6 creadores</span><i>✦</i><span class="is-outline">Comunidad real</span><i>✦</i>
+          <span>Collabs</span><i>✦</i><span class="is-outline">TikTok Live</span><i>✦</i>
+        </div>
+        <div class="marquee__group">
+          <span>Streams en vivo</span><i>✦</i><span class="is-outline">Contenido viral</span><i>✦</i>
+          <span>6 creadores</span><i>✦</i><span class="is-outline">Comunidad real</span><i>✦</i>
+          <span>Collabs</span><i>✦</i><span class="is-outline">TikTok Live</span><i>✦</i>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <p>© 2026 LiveStudio. Hecho con ⚡ por el equipo.</p>
-      <ul class="footer-links">
-        <li><a href="#hero">Inicio</a></li>
-        <li><a href="#members">Equipo</a></li>
-        <li><a href="#gallery">Galería</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
+    <!-- ================= EQUIPO ================= -->
+    <section id="members" class="section" aria-labelledby="membersTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow" data-reveal><i aria-hidden="true"></i>El equipo</span>
+          <h2 class="section-title" id="membersTitle" data-reveal style="--d:70ms">
+            6 voces, <span class="text-grad">una sola señal</span>
+          </h2>
+          <p class="section-lead" data-reveal style="--d:140ms">
+            Cada integrante aporta su estilo. Juntos somos LiveStudio.
+          </p>
+        </header>
+
+        <div class="members-grid" id="membersGrid"></div>
+        <noscript><p class="section-lead" style="text-align:center;margin-top:24px;">Activa JavaScript para ver al equipo.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ================= GALERÍA ================= -->
+    <section id="gallery" class="section" aria-labelledby="galleryTitle">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <span class="eyebrow" data-reveal><i aria-hidden="true"></i>Galería</span>
+            <h2 class="section-title" id="galleryTitle" data-reveal style="--d:70ms">
+              Momentos <span class="text-grad">épicos</span>
+            </h2>
+          </div>
+          <p class="section-lead" data-reveal style="--d:140ms">
+            Capturas de streams, behind the scenes y los mejores clips del estudio.
+          </p>
+        </header>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <noscript><p class="section-lead" style="text-align:center;margin-top:24px;">Activa JavaScript para ver la galería.</p></noscript>
+
+        <div class="gallery-cta" data-reveal>
+          <div class="gallery-cta__text">
+            <strong>¿Quieres ver más?</strong>
+            <span>Todo el contenido nuevo sale primero en TikTok.</span>
+          </div>
+          <a class="btn btn--ghost" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener">
+            Abrir TikTok
+            <svg class="icon icon--arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section id="stats" class="section" aria-labelledby="statsTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow" data-reveal><i aria-hidden="true"></i>Estadísticas</span>
+          <h2 class="section-title" id="statsTitle" data-reveal style="--d:70ms">
+            Números que <span class="text-grad">hablan</span>
+          </h2>
+          <p class="section-lead" data-reveal style="--d:140ms">
+            El crecimiento de una comunidad que no deja de sumar.
+          </p>
+        </header>
+
+        <div class="stats-grid">
+          <article class="stat card spotlight" data-reveal style="--d:0ms">
+            <span class="stat__icon" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="120" data-suffix="K">0</span></span>
+            <span class="stat__label">Seguidores</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:70ms">
+            <span class="stat__icon" data-tone="pink" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="4.8" data-decimals="1" data-suffix="M">0</span></span>
+            <span class="stat__label">Likes totales</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:140ms">
+            <span class="stat__icon" data-tone="violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="15.2" data-decimals="1" data-suffix="M">0</span></span>
+            <span class="stat__label">Views</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:210ms">
+            <span class="stat__icon" data-tone="lime" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="250" data-suffix="+">0</span></span>
+            <span class="stat__label">Lives realizados</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:0ms">
+            <span class="stat__icon" data-tone="pink" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="340" data-suffix="+">0</span></span>
+            <span class="stat__label">Videos publicados</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:70ms">
+            <span class="stat__icon" data-tone="violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="50" data-suffix="K+">0</span></span>
+            <span class="stat__label">Comentarios</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:140ms">
+            <span class="stat__icon" data-tone="cyan" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="m16 11 2 2 3-3"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="6" data-suffix="">0</span></span>
+            <span class="stat__label">Creadores activos</span>
+          </article>
+
+          <article class="stat card spotlight" data-reveal style="--d:210ms">
+            <span class="stat__icon" data-tone="lime" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M17 4H7v5a5 5 0 0 0 10 0V4Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
+            </span>
+            <span class="stat__value"><span data-count data-target="12" data-suffix="">0</span></span>
+            <span class="stat__label">Marcas aliadas</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA BAND ================= -->
+    <section class="cta-wrap" aria-labelledby="ctaTitle">
+      <div class="container">
+        <div class="cta-band" data-reveal="scale">
+          <div class="cta-band__glow" aria-hidden="true"></div>
+          <div class="cta-band__content">
+            <span class="eyebrow eyebrow--light" data-reveal><i aria-hidden="true"></i>Próximamente</span>
+            <h2 class="cta-band__title" id="ctaTitle" data-reveal style="--d:70ms">
+              No te pierdas el próximo <span class="text-grad">live.</span>
+            </h2>
+            <p data-reveal style="--d:140ms">
+              Síguenos en TikTok y entérate antes que nadie de cada directo, drop y colaboración.
+            </p>
+            <a class="btn btn--light magnetic" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener" data-reveal style="--d:210ms">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+              Seguir en TikTok
+            </a>
+          </div>
+          <div class="cta-band__art" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contact" class="section" aria-labelledby="contactTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow" data-reveal><i aria-hidden="true"></i>Contacto</span>
+          <h2 class="section-title" id="contactTitle" data-reveal style="--d:70ms">
+            Únete a la <span class="text-grad">señal</span>
+          </h2>
+          <p class="section-lead" data-reveal style="--d:140ms">
+            Síguenos, colabora o simplemente di hola.
+          </p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-card card" data-reveal="left">
+            <h3>Redes sociales</h3>
+            <p>Encuéntranos en todas las plataformas. El live nunca para.</p>
+
+            <div class="socials">
+              <a class="social" href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener">
+                <span class="social__ico" data-brand="tiktok" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </span>
+                <span class="social__meta"><span class="social__name">TikTok</span><span class="social__handle">@live.studio55</span></span>
+                <svg class="icon icon--arrow social__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+
+              <a class="social" href="https://www.instagram.com/live_studio5?mdxt=dXhkajJtMmtmd2Vl" target="_blank" rel="noopener">
+                <span class="social__ico" data-brand="instagram" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                </span>
+                <span class="social__meta"><span class="social__name">Instagram</span><span class="social__handle">@live_studio5</span></span>
+                <svg class="icon icon--arrow social__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+
+              <a class="social" href="https://www.facebook.com/share/18sJFXWD18/?mibextid=wwXIfr" target="_blank" rel="noopener">
+                <span class="social__ico" data-brand="facebook" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H8.5v3H11v7h2.5z"/></svg>
+                </span>
+                <span class="social__meta"><span class="social__name">Facebook</span><span class="social__handle">LiveStudio</span></span>
+                <svg class="icon icon--arrow social__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+
+            <div class="collab">
+              <h3>Colaboraciones</h3>
+              <p>Marcas, eventos y collabs: <span class="text-cyan">próximamente</span></p>
+              <p class="collab__note">Respondemos en menos de 48h.</p>
+            </div>
+          </div>
+
+          <div class="contact-card contact-card--newsletter card" data-reveal="right" style="--d:100ms">
+            <span class="contact-card__badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg>
+            </span>
+            <h3>Newsletter</h3>
+            <p>Recibe avisos de lives, drops y contenido exclusivo antes que nadie.</p>
+
+            <form class="newsletter" novalidate>
+              <label class="sr-only" for="newsletterEmail">Correo electrónico</label>
+              <div class="field">
+                <input id="newsletterEmail" name="email" type="email" placeholder="tu@email.com" required autocomplete="email" />
+                <span class="field__glow" aria-hidden="true"></span>
+              </div>
+              <button class="btn btn--primary" type="submit">
+                <span class="btn__label">Suscribirme</span>
+                <svg class="icon icon--check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+              </button>
+            </form>
+            <p class="newsletter-status" role="status" aria-live="polite"></p>
+
+            <ul class="perks">
+              <li><span aria-hidden="true">✦</span> Aviso de cada live</li>
+              <li><span aria-hidden="true">✦</span> Contenido exclusivo</li>
+              <li><span aria-hidden="true">✦</span> Cero spam, prometido</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="brand" aria-label="LiveStudio, ir al inicio">
+            <span class="brand__mark"><img src="assets/logo-mark.png" alt="" width="44" height="44" /></span>
+            <span class="brand__name">LIVE<span>STUDIO</span></span>
+          </a>
+          <p>Stream, crea, conecta.<br />Una señal hecha por seis.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Enlaces del sitio">
+          <h4>Explorar</h4>
+          <a href="#hero">Inicio</a>
+          <a href="#members">Equipo</a>
+          <a href="#gallery">Galería</a>
+          <a href="#stats">Stats</a>
+        </nav>
+
+        <nav class="footer-col" aria-label="Redes sociales">
+          <h4>Redes</h4>
+          <a href="https://www.tiktok.com/@live.studio55?_r=1&amp;_t=ZS-9Ac0NJxIgC5" target="_blank" rel="noopener">TikTok ↗</a>
+          <a href="https://www.instagram.com/live_studio5?mdxt=dXhkajJtMmtmd2Vl" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://www.facebook.com/share/18sJFXWD18/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook ↗</a>
+        </nav>
+
+        <div class="footer-col footer-col--cta">
+          <h4>¿Colaboramos?</h4>
+          <p>Marcas, eventos y creadores: hablemos.</p>
+          <a href="#contact" class="footer-link-arrow">Escríbenos <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 LiveStudio. Hecho con <span class="text-cyan">⚡</span> por el equipo.</p>
+        <p class="footer-note">Stream · Crea · Conecta</p>
+      </div>
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script>
-    // ---------- Members data (placeholder names) ----------
-    // ============================================================
-    // EDITA AQUÍ LOS LINKS DE CADA INTEGRANTE
-    // - tiktok / instagram / x : pega la URL COMPLETA (o deja '' vacío y el icono no se muestra)
-    // - handle: el @usuario que se muestra en la tarjeta
-    // ============================================================
-    // 🔧 REDES Y FOTOS DE CADA INTEGRANTE — EDITA AQUÍ FÁCIL
-    // - tiktok / instagram: pega la URL COMPLETA. Si dejas '' vacío, el icono NO se muestra.
-    // - photo: ruta de la foto en assets/ (ej: 'assets/fernando.jpg'). Si está vacía
-    //   se muestran las iniciales. Usa fotos CUADRADAS (~400x400px) para que se vean bien recortadas.
-    //
-    // 📌 REFERENCIA — los 8 links que me pasaste (copia/pega donde corresponda):
-    //    1) https://www.instagram.com/cristhian19chx
-    //    2) https://www.instagram.com/fernando.barreto06
-    //    3) https://www.tiktok.com/@cristhian19xd
-    //    4) https://www.tiktok.com/@fernandobarreto_6
-    //    5) https://www.instagram.com/diazluis.6
-    //    6) https://www.tiktok.com/@luissss.6
-    //    7) https://www.instagram.com/rxgxx.m7x
-    //    8) https://www.tiktok.com/@lxw.m7x
-    // ============================================================
-    const members = [
-      {
-        name: 'Fernando Barreto', role: 'Gerente General', handle: '@fernandobarreto_6',
-        initials: 'FB', grad: 'linear-gradient(135deg,#00f5ff,#8b5cf6)',
-        photo: 'assets/fernando.jpg', // ← foto de Fernando (ej: 'assets/fernando.jpg')
-        tiktok: 'https://www.tiktok.com/@fernandobarreto_6',       // ← TikTok de Fernando
-        instagram: 'https://www.instagram.com/fernando.barreto06'  // ← Instagram de Fernando
-      },
-      {
-        name: 'Luis Diaz', role: 'DJ Profesional', handle: '@luissss.6',
-        initials: 'LD', grad: 'linear-gradient(135deg,#ff00ff,#8b5cf6)',
-        photo: 'assets/luis.jpg', // ← foto de Luis (ej: 'assets/luis.jpg')
-        tiktok: 'https://www.tiktok.com/@luissss.6',       // ← TikTok de Luis
-        instagram: 'https://www.instagram.com/diazluis.6'  // ← Instagram de Luis
-      },
-      {
-        name: 'Rogger Gonzales', role: 'Desarrollador y Diseñador', handle: '@lxw.m7x',
-        initials: 'RG', grad: 'linear-gradient(135deg,#39ff14,#00f5ff)',
-        photo: 'assets/rogger.jpg', // ← foto de Rogger (ej: 'assets/rogger.jpg')
-        tiktok: 'https://www.tiktok.com/@lxw.m7x',       // ← TikTok de Rogger
-        instagram: 'https://www.instagram.com/rxgxx.m7x' // ← Instagram de Rogger
-      },
-      {
-        name: 'Robert Cajusol', role: 'Animador y Productor', handle: '@cajusolrobert',
-        initials: 'RC', grad: 'linear-gradient(135deg,#ff00ff,#ff6b35)',
-        photo: 'assets/robert.jpg', // ← foto de Robert (ej: 'assets/robert.jpg')
-        tiktok: 'https://www.tiktok.com/@robert.cajusol?_r=1',      // ← TikTok de Robert
-        instagram: 'https://www.instagram.com/cajusolrobert?cplk=Z3p2a2l1OXRpYzVm'    // ← Instagram de Robert
-      },
-      {
-        name: 'Cristhian Chimoy', role: 'Animador y Productor', handle: '@cristhian19xd',
-        initials: 'CC', grad: 'linear-gradient(135deg,#8b5cf6,#00f5ff)',
-        photo: 'assets/cristhian.jpg', // ← foto de Cristhian (ej: 'assets/cristhian.jpg')
-        tiktok: 'https://www.tiktok.com/@cristhian19xd',       // ← TikTok de Cristhian
-        instagram: 'https://www.instagram.com/cristhian19chx'  // ← Instagram de Cristhian
-      },
-      {
-        name: 'Daniel Paico', role: 'Animador y Productor', handle: '',
-        initials: 'DP', grad: 'linear-gradient(135deg,#00f5ff,#39ff14)',
-        photo: '', // ← foto de Daniel (ej: 'assets/daniel.jpg')
-        tiktok: '',      // ← TikTok de Daniel
-        instagram: ''    // ← Instagram de Daniel
-      }
-    ];
+  <button class="to-top" id="toTop" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
 
-    const grid = document.getElementById('membersGrid');
-    const revealObserver = window.__livestudioRevealObserver || (typeof io !== 'undefined' ? io : null);
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    // Escape básico para evitar romper el HTML si se editan nombres/handles
-    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    members.forEach((m, i) => {
-      const card = document.createElement('div');
-      card.className = `member-card reveal stagger-${(i % 4) + 1}`;
-      // Solo aparecen los iconos de redes que tengan URL (las vacías se ocultan)
-      const ICON_TIKTOK = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>';
-      const ICON_IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>';
-      const socials = [];
-      if (m.tiktok)    socials.push(`<a href="${esc(m.tiktok)}" target="_blank" rel="noopener" aria-label="TikTok de ${esc(m.name)}">${ICON_TIKTOK}</a>`);
-      if (m.instagram) socials.push(`<a href="${esc(m.instagram)}" target="_blank" rel="noopener" aria-label="Instagram de ${esc(m.name)}">${ICON_IG}</a>`);
-      // Foto del integrante: si hay foto se muestra; si no hay (o falla la carga), quedan las iniciales
-      const avatarInner = m.photo
-        ? `<img src="${esc(m.photo)}" alt="" loading="lazy" onerror="this.parentElement.textContent='${esc(m.initials)}'">`
-        : esc(m.initials);
-      card.innerHTML = `
-        <div class="member-avatar" style="background:${m.grad}; box-shadow: 0 0 24px rgba(0,245,255,0.35);" aria-hidden="true">${avatarInner}</div>
-        <div class="member-name">${esc(m.name)}</div>
-        <div class="member-role">${esc(m.role)}</div>
-        <div class="member-handle">${esc(m.handle) || '✦ Próximamente'}</div>
-        <div class="member-socials">${socials.join('')}</div>
-      `;
-      grid.appendChild(card);
-    });
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de galería" aria-hidden="true">
+    <div class="lightbox__backdrop" data-lb-close></div>
+    <figure class="lightbox__figure">
+      <img id="lbImage" src="" alt="" />
+      <figcaption class="lightbox__caption">
+        <span id="lbCaption"></span>
+        <small id="lbCounter"></small>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-btn--close" data-lb-close aria-label="Cerrar visor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lb-btn lb-btn--prev" id="lbPrev" aria-label="Imagen anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="lb-btn lb-btn--next" id="lbNext" aria-label="Imagen siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
 
-    const galleryItems = [
-      { title: 'Live #247 — Récord de viewers', hue: 180 },
-      { title: 'Behind the scenes', hue: 300 },
-      { title: 'Collab con @invitado', hue: 120 },
-      { title: 'Setup del estudio', hue: 260 },
-      { title: 'Momento viral', hue: 40 },
-      { title: 'Equipo completo', hue: 200 }
-    ];
-    const gGrid = document.getElementById('galleryGrid');
-    galleryItems.forEach((g, i) => {
-      const item = document.createElement('div');
-      item.className = `gallery-item reveal stagger-${(i % 3) + 1}`;
-      item.setAttribute('role', 'img');
-      item.setAttribute('aria-label', g.title);
-      item.innerHTML = `
-        <div class="g-bg" aria-hidden="true" style="background: linear-gradient(135deg, hsla(${g.hue},90%,40%,0.5), hsla(${(g.hue+60)%360},90%,30%,0.7));">LIVE</div>
-        <div class="g-overlay"><span>${esc(g.title)}</span></div>
-      `;
-      gGrid.appendChild(item);
-    });
-
-    // Re-observe + tilt for dynamic elements
-    document.querySelectorAll('.member-card, .gallery-item').forEach(el => {
-      if (revealObserver && !el.classList.contains('in-view')) revealObserver.observe(el);
-      else if (!revealObserver) el.classList.add('in-view');
-      if (reduceMotion) return;
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        el.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
-  </script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
